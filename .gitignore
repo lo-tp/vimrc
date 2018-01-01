@@ -1,0 +1,7 @@
+/bundle/
+/sessions/
+.netrwhist
+.DS_Store
+vimrc.bk
+*.swo
+*.swp

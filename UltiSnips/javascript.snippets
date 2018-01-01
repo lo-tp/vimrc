@@ -1,0 +1,323 @@
+snippet objmtd "object method"
+$1($2){
+  $0
+}
+endsnippet
+
+#Vanila JS
+snippet dsbern "disable eslint rule"
+// eslint-disable-next-line $0
+endsnippet
+snippet dsber "disable eslint rule"
+/* eslint-disable */
+${VISUAL}
+/* eslint-enable */
+endsnippet
+snippet eptD "export default"
+export default $0;
+endsnippet
+
+snippet csg "console.info" i
+console.info($1);
+endsnippet
+
+snippet ifc "Surround if"
+
+if ($0) {
+  ${VISUAL} 
+}
+endsnippet
+
+snippet cst "Defeine a const"
+const $1 = $2;
+endsnippet
+
+snippet switch "Switch clause"
+switch ($1) {
+  $0
+  default:
+    $2
+}
+endsnippet
+
+snippet case 
+case $1:
+  $2
+endsnippet
+
+# import 
+snippet iptb "import both default and named module"
+import $1, { $2 } from '$3';
+endsnippet
+
+snippet iptd "import default  module"
+import $1 from '$2';
+endsnippet
+
+snippet iptn "import named  module"
+import { $1 } from '$2';
+endsnippet
+
+snippet mapStt "map state to props"
+const mapStateToProps = (state) => ({
+  $0
+});
+endsnippet
+
+snippet mapDsp "map state to props"
+const mapDispatchProps = (dispatch) => ({
+  $0
+});
+endsnippet
+
+snippet mgPrp "merge props"
+const mergeProps= (stateProps, dispatchProps, ownProps ) => {
+  $0
+	return{
+	};
+};
+endsnippet
+
+snippet dspc "dispatch methods"
+$1: ($2) =>{
+  dispatch($3($2));
+},
+endsnippet
+
+#React
+
+snippet stateless "define stateless component"
+import React from 'react';
+
+const $1 = () => (
+  $0
+);
+endsnippet
+
+snippet clsCpt "define class component"
+class $1 extends React.Component {
+  render() {
+		return (
+			$0
+		)
+  }
+}
+endsnippet
+
+snippet irct "import React"
+import React from 'react';
+endsnippet
+
+snippet routeFileIni "route file initialization"
+import React from 'react';
+import {
+  Route,
+} from 'react-router';
+
+import $1 from '$2';
+
+const R = (
+  <Route
+    path='$3'
+  >
+    <Route
+      path='$0'
+      component={$1}
+    />
+  </Route>
+);
+
+export default R;
+endsnippet
+
+snippet prtp 
+$1.propTypes = {
+  $0
+};
+endsnippet
+
+snippet ht "html tag" i
+<$1 $0/>
+endsnippet
+snippet hta "html tag" i
+<$1
+  $0
+/>
+endsnippet
+
+snippet htt "html tag" i
+<$1 $0>
+</$1>
+endsnippet
+
+snippet htta "html tag" i
+<$1
+  $0
+>
+</$1>
+endsnippet
+
+# for redux
+snippet mpstt "mapStateProps"
+const mapStateToProps = (state) => {
+  const {$1} = state;
+  return {
+    $0
+  };
+};
+endsnippet
+
+snippet mgpp "mapStateProps"
+const mergeProps = (state, dispatch $1) => {
+	$0
+};
+endsnippet
+
+snippet cnct "connect"
+export default connect($1, $2)($0);
+
+endsnippet
+
+snippet actionBil"action boilerplate"
+import {
+  DESCRIPTIONS as D,
+} from '../action';
+
+export const DESCRIPTIONS = [...D, '$0'];
+export const TYPE = DESCRIPTIONS.join('_');
+export const action = ({ meta, error, payload }) => (
+  {
+    type: TYPE,
+    error,
+    meta,
+    payload,
+  });
+endsnippet
+
+snippet reducerBil"reducer boilerplate"
+import { fromJS } from 'immutable';
+import { Utils } from 'kryfe-lib';
+import { TYPES } from '$1';
+
+const { createReducer } = Utils;
+const initialState = fromJS($0);
+const handlers = {
+};
+
+export default createReducer(initialState, handlers);
+endsnippet
+
+snippet rdcHandler "reducer handler"
+  [TYPES.$1](state, { payload }) {
+    $0
+  },
+endsnippet
+
+snippet cmbReducer"reducer boilerplate"
+import { combineReducers } from 'redux';
+import $1Reducer from './$1/reducer';
+
+export default combineReducers({
+  $1: $1Reducer,
+});
+endsnippet
+
+snippet actDef "define action constant"
+export const $1 = '$1';
+endsnippet
+
+snippet act "invoke action creator"
+  $1dispatch($2({
+    payload: $0,
+    meta: {
+      operation:
+        $3,
+    },
+  }));
+endsnippet
+
+snippet statelessCptBil "stateless component boilerplate"
+import React from 'react';
+
+const $1 = () => (
+	$0
+);
+
+export default $1;
+endsnippet
+snippet thunk	"thunk action"
+export const $1 = () => (
+  (dispatch, getState) => {
+		$0
+  }
+);
+endsnippet
+
+snippet testRdc "test reducer"
+
+  it(TYPES.$1, () => {
+    const $2 = '$2';
+    const result = reducer(initialState, {
+      type: TYPES.$1,
+      payload: $2
+    });
+
+    expect(result.toJS()).toEqual({ $2 });
+  });
+endsnippet
+
+snippet testRdcIni "reducer test initialization"
+import { fromJS } from 'immutable';
+import reducer from 'pages/$1/reducers/$2';
+import { $3 } from 'pages/$1/const/actionTypes';
+
+const initialState = fromJS({
+  $4
+});
+
+describe('pages/$1/reducers/$2', () => {
+$0
+});
+endsnippet
+
+snippet testActionIni "action test initialization"
+import { fromJS } from 'immutable';
+import configureMockStore from 'redux-mock-store';
+import fetchMock from 'fetch-mock';
+import { Middlewares } from 'kryfe-lib';
+import { $1 } from 'pages/$2/actions/$3';
+import { $4 } from 'pages/$2/const/actionTypes';
+
+const mockStore = configureMockStore(Middlewares.middlewares);
+const initialState = {
+  $5
+};
+let store;
+endsnippet
+
+snippet testAction  "test action"
+describe('pages/$1/actions/$2 $3', () => {
+  beforeEach(() => {
+    store = mockStore(initialState);
+  });
+  afterEach(() => {
+    store.clearActions();
+    fetchMock.restore();
+  });
+  it('success', () => {
+		$0
+  });
+});
+endsnippet
+
+snippet iptrct "import react"
+import React from 'react';
+endsnippet
+
+snippet iptprp "import prop-types"
+import propTypes from 'prop-types';
+endsnippet
+
+snippet iptbcp "import base component"
+import { BaseComponent } from 'kryfe-lib';
+endsnippet

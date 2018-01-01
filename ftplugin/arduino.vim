@@ -1,0 +1,1 @@
+nnoremap M :ArduinoVerify<cr>
