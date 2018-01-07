@@ -19,6 +19,7 @@ Bundle 'mxw/vim-jsx'
 Bundle 'SirVer/ultisnips'
 Bundle 'w0rp/ale'
 Bundle 'mileszs/ack.vim'
+Bundle 'ternjs/tern_for_vim'
 Bundle 'tpope/vim-surround'
 
 Bundle 'vim-airline/vim-airline'
