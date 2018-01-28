@@ -50,11 +50,6 @@ set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize,resize
 " if filereadable("viminfo")
 	" rviminfo viminfo
 " endif
-function! Quit()
-	" mksession!
-	" wviminfo viminfo
-	SaveSession
-endfunction
 
 
 let mapleader = "`"
@@ -96,7 +91,7 @@ nnoremap <leader>S :wa<cr>
 "close current window
 nnoremap <c-w> :q<cr>
 "quit vim
-nnoremap <leader>w :call Quit()<cr>:qa<cr>
+nnoremap <leader>w :qa<cr>
 "open a new tab
 nnoremap <C-T> :tabnew<cr>
 "move between tabs
