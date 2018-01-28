@@ -21,6 +21,7 @@ Bundle 'w0rp/ale'
 Bundle 'mileszs/ack.vim'
 Bundle 'ternjs/tern_for_vim'
 Bundle 'tpope/vim-surround'
+Bundle 'prettier/vim-prettier'
 
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
