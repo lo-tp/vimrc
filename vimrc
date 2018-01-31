@@ -275,8 +275,6 @@ let g:ycm_key_list_select_completion = ['<Up>', '<Down>']
 
 set clipboard=unnamed
 
-let g:ale_emit_conflict_warnings = 0
-let g:ale_open_list = '0'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 
@@ -307,6 +305,10 @@ map <Leader>k <Plug>(easymotion-k)
 "ale and vim-gitgutter
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set updatetime=250
+let g:ale_emit_conflict_warnings = 0
+let g:ale_open_list = '0'
+" no lint after file change
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_fixers ={
       \ 'javascript':['eslint'],
       \ 'less':['stylelint']
@@ -330,3 +332,4 @@ function! SignToggle()
 endfunction
 nnoremap m :call SignToggle()<cr>
 nnoremap Y :ALEFix<cr>
+
